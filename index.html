@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Physik – KZU</title>
 
-<!-- PDF.js Bibliothek -->
+<!-- PDF.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
 
@@ -17,31 +17,28 @@
     background: #f6f6f6;
     color: #333;
   }
+
   header {
     background: #003366;
     color: white;
     padding: 20px;
     text-align: center;
   }
-  header img {
-    height: 60px;
-    vertical-align: middle;
-    margin-right: 10px;
-  }
+
   h1 {
-    display: inline;
-    vertical-align: middle;
     margin: 0;
     font-size: 2rem;
   }
+
   .container {
     max-width: 900px;
     margin: 40px auto;
-    background: white;
     padding: 20px;
+    background: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
+
   details {
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -49,37 +46,44 @@
     padding: 10px;
     background: #fafafa;
   }
+
   .container > details > summary {
-    margin-bottom: 10px; /* Abstand Hauptkapitel */
-    margin-top: 10px; /* Abstand Hauptkapitel */
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
+
   summary {
+    cursor: pointer;
     font-weight: bold;
     font-size: 1.1rem;
-    cursor: pointer;
   }
+
   details details summary {
     font-size: 0.95rem;
     font-weight: normal;
     padding-left: 10px;
     color: #444;
   }
+
   .pdf-container {
-    margin-top: 5px;
+    margin-top: 10px;
     border: 1px solid #ccc;
+    padding: 5px;
   }
+
   footer {
     text-align: center;
-    font-size: 0.85rem;
     color: #666;
-    margin: 40px 0 20px 0;
+    margin: 40px 0;
+    font-size: 0.9rem;
   }
 </style>
-</head>
 
+</head>
 <body>
+
 <header>
-	<h1>Physik – KZU</h1>
+  <h1>Physik – KZU</h1>
 </header>
 
 <div class="container">
@@ -87,10 +91,7 @@
 <!-- Kapitel A -->
 <details>
   <summary>A. Einleitung</summary>
-  <details>
-    <summary>1. Skript</summary>
-    <div class="pdf-container" id="pdf-A1"></div>
-  </details>
+  <details><summary>1. Skript</summary><div class="pdf-container" id="pdf-A1"></div></details>
 </details>
 
 <!-- Kapitel B -->
@@ -177,34 +178,61 @@
 </div>
 
 <footer>
-  &copy; Dr. Carmelo Marchica
+  © Dr. Carmelo Marchica
 </footer>
 
-<script>
-// PDF.js Setup
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.88/pdf.worker.min.js';
 
-// Funktion, um PDF in einen Container zu laden
-function loadPDF(containerId, url) {
-  const container = document.getElementById(containerId);
-  const loadingTask = pdfjsLib.getDocument(url);
-  loadingTask.promise.then(pdf => {
-    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-      pdf.getPage(pageNum).then(page => {
-        const scale = 1.3;
-        const viewport = page.getViewport({scale: scale});
-        const canvas = document.createElement('canvas');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-        container.appendChild(canvas);
-        const context = canvas.getContext('2d');
-        page.render({canvasContext: context, viewport: viewport});
-      });
+<!-- PDF SCRIPT -->
+<script>
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+/* Lazy Loading – PDF erst beim Öffnen laden */
+document.querySelectorAll("details details").forEach(section => {
+  section.addEventListener("toggle", () => {
+    if (section.open && !section.dataset.loaded) {
+      const container = section.querySelector(".pdf-container");
+      const id = container.id;
+      loadPDF(id, pdfFiles[id]);
+      section.dataset.loaded = "true";
     }
   });
+});
+
+/* PDF Laden (scharf, automatisch passend) */
+function loadPDF(containerId, url) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+
+  const loadingTask = pdfjsLib.getDocument(url);
+  loadingTask.promise
+    .then(pdf => pdf.getPage(1))
+    .then(page => {
+      const containerWidth = container.clientWidth;
+      const viewportInitial = page.getViewport({ scale: 1 });
+      const scale = containerWidth / viewportInitial.width;
+      const viewport = page.getViewport({ scale });
+
+      const dpi = window.devicePixelRatio || 1;
+      const canvas = document.createElement("canvas");
+
+      canvas.style.width = viewport.width + "px";
+      canvas.style.height = viewport.height + "px";
+
+      canvas.width = viewport.width * dpi;
+      canvas.height = viewport.height * dpi;
+
+      const context = canvas.getContext("2d");
+      context.setTransform(dpi, 0, 0, dpi, 0, 0);
+
+      container.appendChild(canvas);
+
+      page.render({ canvasContext: context, viewport });
+    });
 }
 
-// PDFs laden
+/* Verzeichnis aller PDFs */
 const pdfFiles = {
   'pdf-A1': 'Kapitel_A/Kap_A1.pdf',
   'pdf-B1': 'Kapitel_B/Kap_B1.pdf',
@@ -235,9 +263,6 @@ const pdfFiles = {
   'pdf-X1': 'Kapitel_X/Kap_X1.pdf'
 };
 
-for (const id in pdfFiles) {
-  loadPDF(id, pdfFiles[id]);
-}
 </script>
 
 </body>

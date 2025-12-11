@@ -1,84 +1,77 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physik – KZU</title>
-
-<!-- PDF.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
-
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f6f6f6;
-    color: #333;
-  }
-
-  header {
-    background: #003366;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-
-  h1 {
-    margin: 0;
-    font-size: 2rem;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
-
-  details {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    padding: 10px;
-    background: #fafafa;
-  }
-
-  .container > details > summary {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-
-  summary {
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-
-  details details summary {
-    font-size: 0.95rem;
-    font-weight: normal;
-    padding-left: 10px;
-    color: #444;
-  }
-
-  .pdf-container {
-    margin-top: 10px;
-    border: 1px solid #ccc;
-    padding: 5px;
-  }
-
-  footer {
-    text-align: center;
-    color: #666;
-    margin: 40px 0;
-    font-size: 0.9rem;
-  }
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Physik – KZU</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f6f6f6;
+      color: #333;
+    }
+    header {
+      background: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    header img {
+      height: 60px;
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    h1 {
+      display: inline;
+      vertical-align: middle;
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container > details > summary {
+    	margin-top: 5px;
+  		margin-bottom: 5px;
+	}
+    details {
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      padding: 10px;
+      background: #fafafa;
+    }
+    summary {
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    details details summary {
+      font-size: 0.95rem;
+      font-weight: normal;
+      padding-left: 10px;
+      color: #444;
+    }
+    iframe, embed {
+      width: 100%;
+      height: 800px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin: 40px 0 20px 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -88,182 +81,183 @@
 
 <div class="container">
 
-<!-- Kapitel A -->
-<details>
-  <summary>A. Einleitung</summary>
-  <details><summary>1. Skript</summary><div class="pdf-container" id="pdf-A1"></div></details>
-</details>
+  <!-- Kapitel A -->
+  <details>
+    <summary>A. Einleitung</summary>
+    <details>
+      <summary>1. Einleitung</summary>
+      <iframe src="Kapitel_A/Kap_A1.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel B -->
-<details>
-  <summary>B. Mechanik der Massenpunkte</summary>
-  <details><summary>1. Kinematik</summary><div class="pdf-container" id="pdf-B1"></div></details>
-  <details><summary>2. Dynamik</summary><div class="pdf-container" id="pdf-B2"></div></details>
-  <details><summary>3. Energie und Impuls</summary><div class="pdf-container" id="pdf-B3"></div></details>
-  <details><summary>4. Himmelsmechanik</summary><div class="pdf-container" id="pdf-B4"></div></details>
-</details>
+  <!-- Kapitel B -->
+  <details>
+    <summary>B. Mechanik der Massenpunkte</summary>
+    <details>
+      <summary>1. Kinematik</summary>
+      <iframe src="Kapitel_B/Kap_B1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Dynamik</summary>
+      <iframe src="Kapitel_B/Kap_B2.pdf"></iframe>
+    </details>
+    <details>
+      <summary>3. Energie und Impuls</summary>
+      <iframe src="Kapitel_B/Kap_B3.pdf"></iframe>
+    </details>
+    <details>
+      <summary>4. Himmelsmechanik</summary>
+      <iframe src="Kapitel_B/Kap_B4.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel C -->
-<details>
-  <summary>C. Mechanik starrer Körper</summary>
-  <details><summary>1. Statik</summary><div class="pdf-container" id="pdf-C1"></div></details>
-  <details><summary>2. Dynamik</summary><div class="pdf-container" id="pdf-C2"></div></details>
-</details>
+  <!-- Kapitel C -->
+  <details>
+    <summary>C. Mechanik starrer Körper</summary>
+    <details>
+      <summary>1. Statik</summary>
+      <iframe src="Kapitel_C/Kap_C1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Dynamik</summary>
+      <iframe src="Kapitel_C/Kap_C2.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel D -->
-<details>
-  <summary>D. Mechanik deformierbarer Körper</summary>
-  <details><summary>1. Hydrostatik</summary><div class="pdf-container" id="pdf-D1"></div></details>
-  <details><summary>2. Hydrodynamik</summary><div class="pdf-container" id="pdf-D2"></div></details>
-</details>
+  <!-- Kapitel D -->
+  <details>
+    <summary>D. Mechanik deformierbarer Körper</summary>
+    <details>
+      <summary>1. Hydrostatik</summary>
+      <iframe src="Kapitel_D/Kap_D1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Hydrodynamik</summary>
+      <iframe src="Kapitel_D/Kap_D2.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel E -->
-<details>
-  <summary>E. Schwingungen und Wellen</summary>
-  <details><summary>1. Harmonische Schwingungen</summary><div class="pdf-container" id="pdf-E1"></div></details>
-  <details><summary>2. Mechanische Wellen</summary><div class="pdf-container" id="pdf-E2"></div></details>
-</details>
+  <!-- Kapitel E -->
+  <details>
+    <summary>E. Schwingungen und Wellen</summary>
+    <details>
+      <summary>1. Harmonische Schwingungen</summary>
+      <iframe src="Kapitel_E/Kap_E1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Mechanische Wellen</summary>
+      <iframe src="Kapitel_E/Kap_E2.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel F -->
-<details>
-  <summary>F. Wärmelehre</summary>
-  <details><summary>1. Wärmeausdehnung</summary><div class="pdf-container" id="pdf-F1"></div></details>
-  <details><summary>2. Ideales Gas</summary><div class="pdf-container" id="pdf-F2"></div></details>
-  <details><summary>3. Hauptsätze</summary><div class="pdf-container" id="pdf-F3"></div></details>
-</details>
+  <!-- Kapitel F -->
+  <details>
+    <summary>F. Wärmelehre</summary>
+    <details>
+      <summary>1. Wärmeausdehnung</summary>
+      <iframe src="Kapitel_F/Kap_F1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Ideales Gas</summary>
+      <iframe src="Kapitel_F/Kap_F2.pdf"></iframe>
+    </details>
+    <details>
+      <summary>3. Hauptsätze</summary>
+      <iframe src="Kapitel_F/Kap_F3.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel G -->
-<details>
-  <summary>G. Elektrizitätslehre</summary>
-  <details><summary>1. Elektrostatik</summary><div class="pdf-container" id="pdf-G1"></div></details>
-  <details><summary>2. Elektrische Ströme</summary><div class="pdf-container" id="pdf-G2"></div></details>
-  <details><summary>3. Magnetismus</summary><div class="pdf-container" id="pdf-G3"></div></details>
-  <details><summary>4. Wechselstromkreis</summary><div class="pdf-container" id="pdf-G4"></div></details>
-  <details><summary>5. Elektromagnetische Schwingungen und Wellen</summary><div class="pdf-container" id="pdf-G5"></div></details>
-</details>
+  <!-- Kapitel G -->
+  <details>
+    <summary>G. Elektrizitätslehre</summary>
+    <details>
+      <summary>1. Elektrostatik</summary>
+      <iframe src="Kapitel_G/Kap_G1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Elektrische Ströme</summary>
+      <iframe src="Kapitel_G/Kap_G2.pdf"></iframe>
+    </details>
+    <details>
+      <summary>3. Magnetismus</summary>
+      <iframe src="Kapitel_G/Kap_G3.pdf"></iframe>
+    </details>
+    <details>
+      <summary>4. Wechselstromkreis</summary>
+      <iframe src="Kapitel_G/Kap_G4.pdf"></iframe>
+    </details>
+    <details>
+      <summary>5. Elektromagnetische Schwingungen und Wellen</summary>
+      <iframe src="Kapitel_G/Kap_G5.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel H -->
-<details>
-  <summary>H. Optik</summary>
-  <details><summary>1. Licht</summary><div class="pdf-container" id="pdf-H1"></div></details>
-  <details><summary>2. Geometrische Optik</summary><div class="pdf-container" id="pdf-H2"></div></details>
-</details>
+  <!-- Kapitel H -->
+  <details>
+    <summary>H. Optik</summary>
+    <details>
+      <summary>1. Licht</summary>
+      <iframe src="Kapitel_H/Kap_H1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Geometrische Optik</summary>
+      <iframe src="Kapitel_H/Kap_H2.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel I -->
-<details>
-  <summary>I. Moderne Physik</summary>
-  <details><summary>1. Spezielle Relativitätstheorie</summary><div class="pdf-container" id="pdf-I1"></div></details>
-  <details><summary>2. Quantenmechanik</summary><div class="pdf-container" id="pdf-I2"></div></details>
-  <details><summary>3. Kern- und Teilchenphysik</summary><div class="pdf-container" id="pdf-I3"></div></details>
-</details>
+  <!-- Kapitel I -->
+  <details>
+    <summary>I. Moderne Physik</summary>
+    <details>
+      <summary>1. Spezielle Relativitätstheorie</summary>
+      <iframe src="Kapitel_I/Kap_I1.pdf"></iframe>
+    </details>
+    <details>
+      <summary>2. Quantenmechanik</summary>
+      <iframe src="Kapitel_I/Kap_I2.pdf"></iframe>
+    </details>
+    <details>
+      <summary>3. Kern und Teilchen</summary>
+      <iframe src="Kapitel_I/Kap_I3.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel J -->
-<details>
-  <summary>J. Theoretische Physik</summary>
-  <details><summary>1. Skript</summary><div class="pdf-container" id="pdf-J1"></div></details>
-</details>
+  <!-- Kapitel J -->
+  <details>
+    <summary>J. Theoretische Physik</summary>
+    <details>
+      <summary>Allgemeine Mechanik</summary>
+      <iframe src="Kapitel_J/Kap_J1.pdf"></iframe>
+    </details>
+  </details>
 
-<!-- Kapitel M -->
-<details>
-  <summary>M. Grundwissen der Mathematik</summary>
-  <details><summary>1. Skript</summary><div class="pdf-container" id="pdf-M1"></div></details>
-</details>
 
-<!-- Kapitel X -->
-<details>
-  <summary>X. Zusatzinformationen</summary>
-  <details><summary>1. Skript</summary><div class="pdf-container" id="pdf-X1"></div></details>
-</details>
+  <!-- Kapitel X -->
+  <details>
+    <summary>X. Zusatzinformationen</summary>
+    <details>
+      <summary>Allgemeine Informationen</summary>
+      <iframe src="Xtras/AllgInfo.pdf"></iframe>
+	</details>	
+	<details>
+      <summary>Bücher Empfehlung</summary>
+      <iframe src="Xtras/BuecherEmpfehlung.pdf"></iframe>
+	</details>
+	<details>
+      <summary>Formelsammlung</summary>
+      <iframe src="Xtras/Formelsammlung.pdf"></iframe>
+	</details>
+	<details>    
+      <summary>Mathematik</summary>
+      <iframe src="Xtras/Mathe.pdf"></iframe>
+    </details>
+  </details>
 
 </div>
 
 <footer>
-  © Dr. Carmelo Marchica
+  &copy; 2025 Dr. Carmelo Marchica. Alle Rechte vorbehalten.
 </footer>
-
-
-<!-- PDF SCRIPT -->
-<script>
-
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-/* Lazy Loading – PDF erst beim Öffnen laden */
-document.querySelectorAll("details details").forEach(section => {
-  section.addEventListener("toggle", () => {
-    if (section.open && !section.dataset.loaded) {
-      const container = section.querySelector(".pdf-container");
-      const id = container.id;
-      loadPDF(id, pdfFiles[id]);
-      section.dataset.loaded = "true";
-    }
-  });
-});
-
-/* PDF Laden (scharf, automatisch passend) */
-function loadPDF(containerId, url) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-
-  const loadingTask = pdfjsLib.getDocument(url);
-  loadingTask.promise
-    .then(pdf => pdf.getPage(1))
-    .then(page => {
-      const containerWidth = container.clientWidth;
-      const viewportInitial = page.getViewport({ scale: 1 });
-      const scale = containerWidth / viewportInitial.width;
-      const viewport = page.getViewport({ scale });
-
-      const dpi = window.devicePixelRatio || 1;
-      const canvas = document.createElement("canvas");
-
-      canvas.style.width = viewport.width + "px";
-      canvas.style.height = viewport.height + "px";
-
-      canvas.width = viewport.width * dpi;
-      canvas.height = viewport.height * dpi;
-
-      const context = canvas.getContext("2d");
-      context.setTransform(dpi, 0, 0, dpi, 0, 0);
-
-      container.appendChild(canvas);
-
-      page.render({ canvasContext: context, viewport });
-    });
-}
-
-/* Verzeichnis aller PDFs */
-const pdfFiles = {
-  'pdf-A1': 'Kapitel_A/Kap_A1.pdf',
-  'pdf-B1': 'Kapitel_B/Kap_B1.pdf',
-  'pdf-B2': 'Kapitel_B/Kap_B2.pdf',
-  'pdf-B3': 'Kapitel_B/Kap_B3.pdf',
-  'pdf-B4': 'Kapitel_B/Kap_B4.pdf',
-  'pdf-C1': 'Kapitel_C/Kap_C1.pdf',
-  'pdf-C2': 'Kapitel_C/Kap_C2.pdf',
-  'pdf-D1': 'Kapitel_D/Kap_D1.pdf',
-  'pdf-D2': 'Kapitel_D/Kap_D2.pdf',
-  'pdf-E1': 'Kapitel_E/Kap_E1.pdf',
-  'pdf-E2': 'Kapitel_E/Kap_E2.pdf',
-  'pdf-F1': 'Kapitel_F/Kap_F1.pdf',
-  'pdf-F2': 'Kapitel_F/Kap_F2.pdf',
-  'pdf-F3': 'Kapitel_F/Kap_F3.pdf',
-  'pdf-G1': 'Kapitel_G/Kap_G1.pdf',
-  'pdf-G2': 'Kapitel_G/Kap_G2.pdf',
-  'pdf-G3': 'Kapitel_G/Kap_G3.pdf',
-  'pdf-G4': 'Kapitel_G/Kap_G4.pdf',
-  'pdf-G5': 'Kapitel_G/Kap_G5.pdf',
-  'pdf-H1': 'Kapitel_H/Kap_H1.pdf',
-  'pdf-H2': 'Kapitel_H/Kap_H2.pdf',
-  'pdf-I1': 'Kapitel_I/Kap_I1.pdf',
-  'pdf-I2': 'Kapitel_I/Kap_I2.pdf',
-  'pdf-I3': 'Kapitel_I/Kap_I3.pdf',
-  'pdf-J1': 'Kapitel_J/Kap_J1.pdf',
-  'pdf-M1': 'Kapitel_M/Kap_M1.pdf',
-  'pdf-X1': 'Kapitel_X/Kap_X1.pdf'
-};
-
-</script>
 
 </body>
 </html>
